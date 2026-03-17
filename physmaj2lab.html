@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>মেকানিক্স ল্যাব - প্র্যাকটিক্যাল PDF ভিউয়ার</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            background: #2c3e50;
+            font-family: 'Segoe UI', system-ui, sans-serif;
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+            overflow: hidden;
+        }
+        /* টুলবার স্টাইল */
+        .toolbar {
+            background: #34495e;
+            color: white;
+            padding: 10px 20px;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            flex-wrap: wrap;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+            z-index: 10;
+        }
+        .file-info {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            background: #22313e;
+            padding: 6px 15px;
+            border-radius: 40px;
+            font-weight: 500;
+        }
+        .file-info i {
+            font-size: 1.3rem;
+            color: #e67e22;
+        }
+        .nav-buttons {
+            display: flex;
+            gap: 8px;
+        }
+        .nav-btn {
+            background: #3d566e;
+            border: none;
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            font-size: 1.3rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: 0.2s;
+        }
+        .nav-btn:hover:not(:disabled) {
+            background: #5d7a99;
+        }
+        .nav-btn:disabled {
+            opacity: 0.4;
+            cursor: not-allowed;
+        }
+        .page-indicator {
+            background: #2c3e50;
+            padding: 5px 20px;
+            border-radius: 30px;
+            font-size: 1rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+        }
+        .zoom-controls {
+            display: flex;
+            gap: 5px;
+            margin-left: auto;
+        }
+        .zoom-btn {
+            background: #3d566e;
+            border: none;
+            color: white;
+            width: 36px;
+            height: 36px;
+            border-radius: 6px;
+            font-weight: bold;
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+        .zoom-btn:hover {
+            background: #5d7a99;
+        }
+        .zoom-level {
+            background: #22313e;
+            padding: 0 12px;
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            font-size: 0.95rem;
+            min-width: 70px;
+            justify-content: center;
+        }
+        /* PDF ক্যানভাস ধারক */
+        .pdf-container {
+            flex: 1;
+            background: #1a2632;
+            overflow: auto;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            padding: 20px;
+            position: relative;
+            scroll-behavior: smooth;
+        }
+        #pdf-render {
+            box-shadow: 0 5px 35px rgba(0,0,0,0.5);
+            background: white;
+            display: block;
+            max-width: 100%;
+            height: auto;
+            transition: width 0.1s ease;
+        }
+        /* লোডিং ও মেসেজ */
+        .loading-overlay {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.7);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            z-index: 20;
+            backdrop-filter: blur(3px);
+        }
+        .spinner {
+            width: 60px;
+            height: 60px;
+            border: 8px solid rgba(255,255,255,0.2);
+            border-top: 8px solid #e67e22;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin-bottom: 20px;
+        }
+        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+        .error-msg {
+            background: #c0392b;
+            color: white;
+            padding: 15px 30px;
+            border-radius: 50px;
+            font-weight: 500;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        }
+        .hidden { display: none; }
+        /* রেসপনসিভ */
+        @media (max-width: 700px) {
+            .toolbar { gap: 10px; }
+            .file-info span { display: none; }
+            .zoom-level { display: none; }
+        }
+    </style>
+    <!-- pdf.js লাইব্রেরি (CDN) -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.16.105/pdf.min.js"></script>
+    <script>
+        // ওয়ার্কার ঠিকানা সেট করা (লোকাল CDN থেকে দিলেও ঠিক আছে)
+        pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.16.105/pdf.worker.min.js';
+    </script>
+</head>
+<body>
+    <div class="toolbar">
+        <div class="file-info">
+            <i>📄</i>
+            <span>Mechanics Lab -2025-26 Pratical.pdf</span>
+        </div>
+        <div class="nav-buttons">
+            <button class="nav-btn" id="prev-page" disabled>◀</button>
+            <span class="page-indicator" id="page-num">পৃষ্ঠা ০ / ০</span>
+            <button class="nav-btn" id="next-page" disabled>▶</button>
+        </div>
+        <div class="zoom-controls">
+            <button class="zoom-btn" id="zoom-out">−</button>
+            <span class="zoom-level" id="zoom-level">১০০%</span>
+            <button class="zoom-btn" id="zoom-in">+</button>
+        </div>
+    </div>
+
+    <div class="pdf-container" id="pdf-container">
+        <canvas id="pdf-render"></canvas>
+        <!-- লোডিং ওভারলে -->
+        <div id="loading" class="loading-overlay">
+            <div class="spinner"></div>
+            <div>PDF লোড হচ্ছে... দয়া করে অপেক্ষা করুন</div>
+        </div>
+        <div id="error-message" class="loading-overlay hidden">
+            <div class="error-msg">⚠️ PDF খুলতে সমস্যা! ফাইল পাথ ও নাম ঠিক আছে কি?</div>
+        </div>
+    </div>
+
+    <script>
+        (function() {
+            // PDF ফাইলের পাথ (বর্তমান ডিরেক্টরিতে রাখতে হবে)
+            const pdfPath = 'Mechanics Lab -2025-26 Pratical.pdf'; // ফাইল নাম ঠিকমত দাও
+            
+            // স্টেট ভেরিয়েবল
+            let pdfDoc = null,
+                pageNum = 1,
+                pageRendering = false,
+                pageNumPending = null,
+                scale = 1.5,           // বেস স্কেল (প্রাথমিক জুম)
+                canvas = document.getElementById('pdf-render'),
+                ctx = canvas.getContext('2d'),
+                container = document.getElementById('pdf-container');
+
+            // UI এলিমেন্ট
+            const prevBtn = document.getElementById('prev-page');
+            const nextBtn = document.getElementById('next-page');
+            const pageNumSpan = document.getElementById('page-num');
+            const zoomLevelSpan = document.getElementById('zoom-level');
+            const loadingDiv = document.getElementById('loading');
+            const errorDiv = document.getElementById('error-message');
+
+            /** পৃষ্ঠা রেন্ডার করার ফাংশন (স্কেল ও ক্যানভাস আপডেট) */
+            function renderPage(num) {
+                pageRendering = true;
+                // লোডিং দেখাও (যদি খুব দ্রুত হয়, ফ্লিকার এড়াতে একটু ডিফার)
+                loadingDiv.classList.remove('hidden');
+
+                pdfDoc.getPage(num).then(page => {
+                    // ভিউপোর্ট অনুযায়ী ডাইমেনশন নির্ধারণ
+                    const viewport = page.getViewport({ scale: scale });
+                    canvas.height = viewport.height;
+                    canvas.width = viewport.width;
+
+                    // রেন্ডার কন্টেক্সট
+                    const renderContext = {
+                        canvasContext: ctx,
+                        viewport: viewport
+                    };
+
+                    const renderTask = page.render(renderContext);
+
+                    renderTask.promise.then(() => {
+                        pageRendering = false;
+                        loadingDiv.classList.add('hidden');
+
+                        if (pageNumPending !== null) {
+                            // অপেক্ষমাণ পৃষ্ঠা আছে কিনা
+                            renderPage(pageNumPending);
+                            pageNumPending = null;
+                        }
+
+                        // পৃষ্ঠা সূচক ও বাটন আপডেট
+                        pageNumSpan.innerText = `পৃষ্ঠা ${num} / ${pdfDoc.numPages}`;
+                        prevBtn.disabled = (num <= 1);
+                        nextBtn.disabled = (num >= pdfDoc.numPages);
+                    }).catch(err => {
+                        console.error('রেন্ডার ত্রুটি:', err);
+                        loadingDiv.classList.add('hidden');
+                        errorDiv.classList.remove('hidden');
+                    });
+                }).catch(err => {
+                    console.error('পৃষ্ঠা লোড ত্রুটি:', err);
+                    loadingDiv.classList.add('hidden');
+                    errorDiv.classList.remove('hidden');
+                });
+            }
+
+            /** কিউ ব্যবস্থাপনা */
+            function queueRenderPage(num) {
+                if (pageRendering) {
+                    pageNumPending = num;
+                } else {
+                    renderPage(num);
+                }
+            }
+
+            /** আগের পৃষ্ঠা */
+            function onPrevPage() {
+                if (pageNum <= 1) return;
+                pageNum--;
+                queueRenderPage(pageNum);
+            }
+
+            /** পরবর্তী পৃষ্ঠা */
+            function onNextPage() {
+                if (!pdfDoc || pageNum >= pdfDoc.numPages) return;
+                pageNum++;
+                queueRenderPage(pageNum);
+            }
+
+            /** জুম ইন/আউট ও রি-রেন্ডার */
+            function zoom(factor) {
+                if (!pdfDoc) return;
+                scale = Math.min(3.5, Math.max(0.6, scale + factor)); // সীমা ০.৬ থেকে ৩.৫
+                const percent = Math.round(scale * 100);
+                zoomLevelSpan.innerText = percent + '%';
+                queueRenderPage(pageNum); // বর্তমান পৃষ্ঠা নতুন স্কেলে দেখাও
+            }
+
+            /** PDF ডকুমেন্ট লোড করা */
+            function loadPdf() {
+                loadingDiv.classList.remove('hidden');
+                errorDiv.classList.add('hidden');
+
+                pdfjsLib.getDocument(pdfPath).promise.then(pdf => {
+                    pdfDoc = pdf;
+                    pageNum = 1;
+                    scale = 1.5; // রিসেট স্কেল
+                    zoomLevelSpan.innerText = '১৫০%'; // ইনিশিয়াল জুম ১.৫*১০০ = ১৫০%
+                    
+                    // সব ঠিক থাকলে প্রথম পৃষ্ঠা দেখাও
+                    renderPage(pageNum);
+                }).catch(err => {
+                    console.error('PDF লোডিং ত্রুটি:', err);
+                    loadingDiv.classList.add('hidden');
+                    errorDiv.classList.remove('hidden');
+                });
+            }
+
+            // --- ইভেন্ট লিসেনার ---
+            prevBtn.addEventListener('click', onPrevPage);
+            nextBtn.addEventListener('click', onNextPage);
+
+            document.getElementById('zoom-in').addEventListener('click', () => zoom(0.25));
+            document.getElementById('zoom-out').addEventListener('click', () => zoom(-0.25));
+
+            // কীবোর্ড শর্টকাট (পেজ আপ/ডাউন ও জুম)
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'ArrowLeft' || e.key === 'PageUp') {
+                    onPrevPage();
+                    e.preventDefault();
+                } else if (e.key === 'ArrowRight' || e.key === 'PageDown') {
+                    onNextPage();
+                    e.preventDefault();
+                } else if (e.key === '+' || e.key === '=') {
+                    zoom(0.25);
+                    e.preventDefault();
+                } else if (e.key === '-' || e.key === '_') {
+                    zoom(-0.25);
+                    e.preventDefault();
+                }
+            });
+
+            // স্ক্রোল হুইল দিয়ে জুম (ঐচ্ছিক, কন্টেইনারে)
+            container.addEventListener('wheel', (e) => {
+                if (e.ctrlKey) { // ctrl+স্ক্রোল জুম
+                    e.preventDefault();
+                    const delta = e.deltaY > 0 ? -0.1 : 0.1;
+                    zoom(delta);
+                }
+            });
+
+            // টাচপ্যাড পিঞ্চ জুমের জন্য (সিম্পল হ্যান্ডলার)
+            let touchZoomDistance = null;
+            container.addEventListener('touchstart', (e) => {
+                if (e.touches.length === 2) {
+                    const dx = e.touches[0].clientX - e.touches[1].clientX;
+                    const dy = e.touches[0].clientY - e.touches[1].clientY;
+                    touchZoomDistance = Math.sqrt(dx * dx + dy * dy);
+                }
+            });
+            container.addEventListener('touchmove', (e) => {
+                if (e.touches.length === 2 && touchZoomDistance) {
+                    e.preventDefault();
+                    const dx = e.touches[0].clientX - e.touches[1].clientX;
+                    const dy = e.touches[0].clientY - e.touches[1].clientY;
+                    const newDist = Math.sqrt(dx * dx + dy * dy);
+                    const diff = newDist - touchZoomDistance;
+                    if (Math.abs(diff) > 10) {
+                        zoom(diff > 0 ? 0.1 : -0.1);
+                        touchZoomDistance = newDist; // আপডেট যাতে বারবার জুম কমে না
+                    }
+                }
+            });
+            container.addEventListener('touchend', () => {
+                touchZoomDistance = null;
+            });
+
+            // লোড হওয়ার সাথে সাথে PDF পড়া শুরু
+            loadPdf();
+
+            // অপশনাল: উইন্ডো রিসাইজে ক্যানভাস রি-অ্যাডজাস্ট নয় (স্কেল ধরে রাখি)
+            // তবে কেউ যদি ডায়নামিক ফিট চায়, এড করতে পারো। আমরা স্থির স্কেলে রাখছি।
+        })();
+    </script>
+</body>
+</html>
