@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Expt. 06: Kater's Pendulum | Determination of g</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            background: #f0f5fb;
+            font-family: 'Times New Roman', Times, serif;
+            padding: 30px 20px;
+            display: flex;
+            justify-content: center;
+        }
+        .practical-card {
+            max-width: 1100px;
+            width: 100%;
+            background: #ffffff;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+            border-radius: 28px;
+            padding: 35px 40px;
+            border: 1px solid #c2d4e6;
+        }
+        h1 {
+            font-size: 28px;
+            color: #083358;
+            border-bottom: 3px solid #1d5b8c;
+            padding-bottom: 8px;
+            margin-bottom: 25px;
+            font-weight: 700;
+        }
+        .expt-section {
+            margin-bottom: 45px;
+            padding: 20px 25px;
+            background: #f9fdff;
+            border-radius: 30px;
+            border: 1px solid #bed9f0;
+        }
+        h2 {
+            font-size: 24px;
+            background: #d4e3f5;
+            padding: 8px 22px;
+            border-left: 8px solid #1f4e7a;
+            margin-bottom: 20px;
+            border-radius: 0 50px 50px 0;
+            color: #0a2f4a;
+            font-weight: 700;
+        }
+        h3 {
+            font-size: 20px;
+            margin: 20px 0 10px 20px;
+            color: #1c3f60;
+            font-weight: 650;
+            border-bottom: 1px dashed #4379a1;
+            padding-bottom: 5px;
+        }
+        h4 {
+            font-size: 18px;
+            margin: 15px 0 5px 25px;
+            color: #1f4e7a;
+            font-weight: 600;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            font-size: 15.5px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.04);
+        }
+        th {
+            background: #1e3e5c;
+            color: white;
+            font-weight: 600;
+            padding: 12px 8px;
+            border: 1px solid #2c5370;
+            text-align: center;
+        }
+        td {
+            padding: 10px 12px;
+            border: 1px solid #9db9d6;
+            background: #fefefe;
+            text-align: center;
+        }
+        .note-box {
+            background: #ecf7e9;
+            padding: 12px 25px;
+            border-left: 8px solid #3d854d;
+            border-radius: 40px;
+            margin: 25px 0;
+            font-style: italic;
+            font-size: 17px;
+        }
+        .warning {
+            background: #fff5e1;
+            border: 2px solid #d98c2e;
+            border-radius: 28px;
+            padding: 15px 25px;
+            margin: 20px 0;
+        }
+        .fig-area {
+            background: #e6f0fa;
+            padding: 15px 25px;
+            border-radius: 40px;
+            margin: 15px 0;
+            border: 1px solid #7fa9c9;
+            font-family: 'Courier New', monospace;
+        }
+        ul, ol {
+            margin-left: 35px;
+            line-height: 1.8;
+        }
+        .right-sign {
+            text-align: right;
+            margin-top: 40px;
+            font-size: 18px;
+            border-top: 2px dashed #aaa;
+            padding-top: 25px;
+        }
+        .teacher-sign {
+            text-align: right;
+            font-style: italic;
+            color: #3d5a73;
+            margin: 15px 0;
+            font-size: 16px;
+        }
+        .page-header {
+            display: flex;
+            justify-content: space-between;
+            background: #dde9f5;
+            padding: 8px 20px;
+            border-radius: 40px;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+        .formula-block {
+            background: #e2f0fa;
+            padding: 15px 25px;
+            border-radius: 30px;
+            border: 1px dashed #1e4a76;
+            margin: 20px 0;
+        }
+        .math {
+            font-style: italic;
+            background: #f8f2e7;
+            padding: 2px 8px;
+            border-radius: 12px;
+            font-weight: 500;
+        }
+        .part-tag {
+            background: #1d4668;
+            color: white;
+            padding: 6px 18px;
+            border-radius: 40px;
+            font-size: 15px;
+            display: inline-block;
+            margin: 5px;
+        }
+        .center {
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+<div class="practical-card">
+    <h1>🕰️ Expt. No. 06 | Date: 10/03/2026 | Page No. 7</h1>
+
+    <!-- Main Experiment Section -->
+    <div class="expt-section">
+        <div class="page-header">
+            <span>Expt. No. 06</span>
+            <span>Date: 10/03/2026</span>
+            <span>Page No. 7</span>
+        </div>
+
+        <h2>To Determine the Value of g by Kater's Pendulum</h2>
+
+        <h3>■ Theory:</h3>
+
+        <h4>Introduction to the Compound Pendulum:</h4>
+        <p>A Kater's Pendulum is a physical (compound) pendulum designed to determine the acceleration due to gravity (g) with high precision. Unlike a simple pendulum, which assumes a point mass suspended by a massless string, a compound pendulum has its mass distributed along its length. This distribution makes it more realistic but mathematically more complex. For any rigid body oscillating freely about a horizontal axis under gravity, the time period (T) is given by:</p>
+
+        <div class="formula-block center">
+            <strong>T = 2π * √(I / (m * g * d))</strong>
+        </div>
+
+        <p>where:<br>
+        • I = moment of inertia about the point of suspension<br>
+        • m = total mass of the pendulum<br>
+        • d = distance from the point of suspension to the center of gravity (C.G.)<br>
+        • g = acceleration due to gravity</p>
+
+        <h4>The Equivalent Length Concept:</h4>
+        <p>Using the Parallel Axis Theorem, the moment of inertia about any suspension point can be expressed as:<br>
+        <span class="math">I = I<sub>G</sub> + m * d² = m * (k² + d²)</span></p>
+
+        <p>where I<sub>G</sub> = moment of inertia about the center of gravity, and k = radius of gyration. Substituting this into the time period equation:</p>
+
+        <div class="formula-block center">
+            <strong>T = 2π * √((k² + d²) / (g * d))</strong>
+        </div>
+
+        <div class="page-header" style="margin-top: 20px;">
+            <span>--- Page 2 ---</span>
+        </div>
+
+        <p>Comparing this with the simple pendulum formula, we can define an equivalent length of simple pendulum (L<sub>eq</sub>) as:</p>
+
+        <div class="formula-block center">
+            <strong>L<sub>eq</sub> = (k² + d²) / d = d + (k² / d)</strong>
+        </div>
+
+        <p>This shows that the time period depends on both the distance to the center of gravity AND the distribution of mass.</p>
+
+        <h4>The Theorem of Reversibility:</h4>
+        <p>The fundamental principle behind Kater's Pendulum is the theorem of reversibility. Consider two points of suspension on opposite sides of the center of gravity, at distances l₁ and l₂ from the C.G. The time periods about these points are:</p>
+
+        <p>T₁ = 2π * √((k² + l₁²) / (g * l₁))<br>
+        T₂ = 2π * √((k² + l₂²) / (g * l₂))</p>
+
+        <p>If these time periods are made equal (T₁ = T₂), then mathematically:<br>
+        <span class="math">(k² + l₁²) / l₁ = (k² + l₂²) / l₂</span></p>
+
+        <p>Solving this equation leads to: <span class="math">k² = l₁ * l₂</span></p>
+
+        <p>Substituting this back, the equivalent length becomes:<br>
+        <span class="math">L<sub>eq</sub> = (l₁ * l₂ + l₁²) / l₁ = l₁ + l₂</span></p>
+
+        <p>This is the key result: when the time periods about both knife-edges are equal, the distance between them (l₁ + l₂) is exactly the length of an equivalent simple pendulum. This eliminates the need to know the moment of inertia or radius of gyration.</p>
+
+        <h4>Bessel's Formula: The Working Equation:</h4>
+        <p>In practice, it is extremely difficult to make T₁ and T₂ exactly equal. Therefore, we use Bessel's formula, which gives accurate results even when the time periods are slightly different.</p>
+
+        <div class="page-header" style="margin-top: 20px;">
+            <span>--- Page 3 ---</span>
+        </div>
+
+        <div class="formula-block center">
+            <strong>g = (8 * π²) / [ (T₁² + T₂²) / (l₁ + l₂) + (T₁² – T₂²) / (l₁ – l₂) ]</strong>
+        </div>
+
+        <p>where:<br>
+        • T₁ = Time period about knife-edge K₁<br>
+        • T₂ = Time period about knife-edge K₂<br>
+        • l₁ = Distance from C.G. to knife-edge K₁<br>
+        • l₂ = Distance from C.G. to knife-edge K₂</p>
+
+        <h4>Conditions for Accurate Measurement:</h4>
+        <p>For the theoretical formula to yield accurate results, certain conditions must be maintained:</p>
+        <ol>
+            <li><strong>Small Amplitude Oscillations:</strong> The pendulum must be displaced by less than 4° to ensure simple harmonic motion. Larger amplitudes introduce errors in the time period.</li>
+            <li><strong>Rigid Support:</strong> The knife-edges must rest on a perfectly rigid support to prevent energy loss or transfer of motion to the support.</li>
+            <li><strong>Vertical Plane Oscillation:</strong> The pendulum must oscillate in a strictly vertical plane without any conical or elliptical motion.</li>
+            <li><strong>Minimum External Disturbances:</strong> Air currents, vibrations, and other environmental factors must be minimized as they affect the time period.</li>
+        </ol>
+
+        <div class="page-header" style="margin-top: 20px;">
+            <span>--- Page 5 ---</span>
+        </div>
+
+        <div class="page-header">
+            <span>Expt. No. 06</span>
+            <span>Date: 10/03/2026</span>
+            <span>Page No. 18</span>
+        </div>
+
+        <h3>1. Aim:</h3>
+        <p>To determine the value of gravitational acceleration (g) using Kater's Reversible Pendulum.</p>
+
+        <h3>2. Apparatus:</h3>
+        <p>Kater's Pendulum, sharp knife-edge support, digital stopwatch, and a meter scale.</p>
+
+        <h3>3. Working Formula:</h3>
+        <p>The value of acceleration due to gravity (g) is calculated using Bessel's formula:</p>
+        <div class="formula-block center">
+            <strong>(8 * π²) / g = (T₁² + T₂²) / (l₁ + l₂) + (T₁² – T₂²) / (l₁ – l₂)</strong>
+        </div>
+        <p>Where:<br>
+        • T₁ and T₂ are the time periods about the knife-edges K₁ and K₂.<br>
+        • l₁ and l₂ are distances of the knife-edges from the center of gravity (C.G.).</p>
+
+        <h3>Observations:</h3>
+
+        <h4>Table I: Measurement of Time Periods (T₁ and T₂)</h4>
+        <table>
+            <tr><th>Position</th><th>No. of Exp.</th><th>No. of Oscillations (n)</th><th>Total Time (t) in Sec</th><th>Time Period T = t/n (Sec)</th><th>Mean Time Period (Sec)</th></tr>
+            <tr><td rowspan="3">Knife-edge K₁</td><td>1</td><td>20</td><td>34.04</td><td>1.702</td><td rowspan="3"><strong>T₁ = 1.701 S</strong></td></tr>
+            <tr><td>2</td><td>30</td><td>51.03</td><td>1.701</td></tr>
+            <tr><td>3</td><td>40</td><td>68.00</td><td>1.700</td></tr>
+            <tr><td rowspan="3">Knife-edge K₂</td><td>1</td><td>50</td><td>87.45</td><td>1.749</td><td rowspan="3"><strong>T₂ = 1.754 S</strong></td></tr>
+            <tr><td>2</td><td>50</td><td>87.75</td><td>1.755</td></tr>
+            <tr><td>3</td><td>50</td><td>87.85</td><td>1.757</td></tr>
+        </table>
+
+        <h4>Table II: Measurement of Distance from C.G.</h4>
+        <table>
+            <tr><th>Distance</th><th>Value (cm)</th><th>Value in Meters (m)</th></tr>
+            <tr><td>Distance l₁</td><td>46.2 cm</td><td>0.462 m</td></tr>
+            <tr><td>Distance l₂</td><td>53.1 cm</td><td>0.531 m</td></tr>
+            <tr><td>Sum (l₁ + l₂)</td><td>99.3 cm</td><td>0.993 m</td></tr>
+            <tr><td>Difference (l₁ – l₂)</td><td>-6.9 cm</td><td>-0.069 m</td></tr>
+        </table>
+
+        <div class="page-header" style="margin-top: 20px;">
+            <span>--- Page 7 ---</span>
+        </div>
+
+        <div class="page-header">
+            <span>Expt. No. 06</span>
+            <span>Date: 10/03/2026</span>
+            <span>Page No. 19</span>
+        </div>
+
+        <h3>Calculations:</h3>
+        <p>T₁ = 1.701 S &nbsp;&nbsp; ⇒ &nbsp;&nbsp; T₁² = <strong>2.8934</strong><br>
+        T₂ = 1.754 S &nbsp;&nbsp; ⇒ &nbsp;&nbsp; T₂² = <strong>3.0765</strong></p>
+
+        <p><strong>Calculating the first term:</strong><br>
+        (T₁² + T₂²) / (l₁ + l₂) = (2.8934 + 3.0765) / 0.993 = 5.9699 / 0.993 = <strong>6.012</strong> (as per notebook)</p>
+
+        <p><strong>Calculating the second term:</strong><br>
+        (T₁² – T₂²) / (l₁ – l₂) = (2.8934 – 3.0765) / –0.069 = (–0.1831) / –0.069 = <strong>2.654</strong></p>
+
+        <p><strong>Finding g:</strong><br>
+        (8 * π²) / g = 6.012 + 2.654 = 8.666<br>
+        g = (8 * (3.1416)²) / 8.666 = (8 * 9.8696) / 8.666 = 78.9568 / 8.666<br>
+        <strong>g ≈ 9.11 m/s²</strong></p>
+
+        <h3>Precautions:</h3>
+        <ol>
+            <li>The Pendulum was made to oscillate in a strictly vertical plane to avoid any rotational errors.</li>
+            <li>The amplitude of oscillation was kept very small (under 4°) to satisfy the condition for simple harmonic motion.</li>
+            <li>Precautions were taken to ensure there were no air currents (fans were switched off) during the timing measurements.</li>
+            <li>The knife-edges were sharp and properly aligned to minimize friction.</li>
+            <li>Multiple readings were taken for each time period to improve accuracy.</li>
+        </ol>
+
+        <h3>Sources of Error:</h3>
+        <ul>
+            <li>Air resistance and damping effects</li>
+            <li>Parallax error in measuring distances l₁ and l₂</li>
+            <li>Human reaction time in starting/stopping the stopwatch</li>
+            <li>Imperfect rigidity of the support</li>
+            <li>Slight deviations from purely vertical oscillation</li>
+        </ul>
+
+        <h3>Result:</h3>
+        <p>The acceleration due to gravity (g) determined using Kater's Pendulum is <strong>9.11 m/s²</strong>.</p>
+        <p>The standard value of g is 9.8 m/s². The percentage error is approximately 7.04%, which may be attributed to experimental uncertainties and environmental factors.</p>
+
+        <h3>Conclusion:</h3>
+        <p>Kater's Pendulum provides a reliable method for determining the acceleration due to gravity by utilizing the theorem of reversibility and Bessel's formula. The experiment demonstrates that even when exact equality of time periods is not achieved, accurate results can still be obtained through proper mathematical treatment. The value obtained (9.11 m/s²) is reasonably close to the standard value, confirming the validity of the method.</p>
+
+        <!-- paper gap instruction -->
+        <div class="note-box">
+
+        </div>
+    </div>
+
+    <!-- Final note: all texts preserved -->
+    <div class="note-box">
+
+    </div>
+
+    <div class="right-sign">
+        ✍️ <strong>Date: 10/03/2026</strong> &nbsp;&nbsp;&nbsp;&nbsp; Signature: _______________
+    </div>
+</div>
+</body>
+</html>

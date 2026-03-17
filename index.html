@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.5, user-scalable=yes">
+    <title>Practical Exam 2026 | lab index</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', 'Times New Roman', 'Segoe UI', system-ui, -apple-system, sans-serif;
+        }
+
+        body {
+            background: radial-gradient(circle at 20% 30%, #f0f7ff, #d4e2f2);
+            min-height: 100vh;
+            padding: 20px 16px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* soft premium card */
+        .glass-panel {
+            max-width: 1300px;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.75);
+            backdrop-filter: blur(24px) saturate(180%);
+            -webkit-backdrop-filter: blur(24px) saturate(180%);
+            border-radius: 52px 52px 44px 44px;
+            box-shadow: 0 30px 60px -15px rgba(18, 52, 77, 0.35), 0 0 0 1px rgba(255,255,255,0.5) inset, 0 0 0 2px rgba(255,255,255,0.2);
+            padding: 28px 28px 40px;
+            transition: all 0.2s ease;
+        }
+
+        /* header area – refined */
+        .top-lab {
+            text-align: center;
+            margin-bottom: 24px;
+        }
+
+        .top-lab h1 {
+            font-size: clamp(36px, 10vw, 58px);
+            font-weight: 700;
+            background: linear-gradient(155deg, #0c334e, #1d5983);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            letter-spacing: -0.5px;
+            filter: drop-shadow(2px 4px 8px rgba(44, 112, 172, 0.2));
+            margin-bottom: 6px;
+        }
+
+        .title-badge {
+            display: inline-block;
+            background: rgba(255,255,245,0.7);
+            backdrop-filter: blur(4px);
+            -webkit-backdrop-filter: blur(4px);
+            padding: 10px 32px;
+            border-radius: 80px;
+            border: 1px solid rgba(255,255,255,0.9);
+            box-shadow: 0 8px 18px -8px rgba(19, 62, 102, 0.2);
+            margin-top: 4px;
+        }
+
+        .title-badge span {
+            font-size: clamp(16px, 4vw, 22px);
+            font-weight: 500;
+            color: #1b4d74;
+        }
+
+        .title-badge strong {
+            color: #003153;
+            font-weight: 700;
+            background: #fbe9c3;
+            padding: 3px 14px;
+            border-radius: 40px;
+            margin-left: 10px;
+            font-size: 0.9em;
+            border: 1px solid #dba959;
+        }
+
+        /* responsive grid – premium soft */
+        .experiment-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 24px;
+            margin: 36px 0 30px;
+        }
+
+        /* card – luxurious but clean */
+        .expt-card {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border-radius: 42px 42px 28px 28px;
+            border: 1px solid rgba(255,255,255,0.9);
+            box-shadow: 0 20px 35px -10px rgba(27, 60, 92, 0.2), 0 0 0 1px rgba(255,255,255,0.8) inset;
+            transition: all 0.25s cubic-bezier(0.2, 0, 0, 1);
+            text-decoration: none;
+            color: inherit;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+
+        .expt-card:hover {
+            transform: translateY(-8px) scale(1.01);
+            box-shadow: 0 30px 45px -12px #1e4b72, 0 0 0 2px rgba(255,242,213,0.9) inset;
+            background: rgba(255, 255, 255, 0.85);
+        }
+
+        .card-head {
+            background: linear-gradient(125deg, #1b4f7a, #103a58);
+            padding: 20px 16px 16px;
+            text-align: center;
+            border-bottom: 3px solid #fec277;
+            position: relative;
+        }
+
+        .card-head .expt-number {
+            font-size: 36px;
+            font-weight: 800;
+            color: white;
+            text-shadow: 0 3px 5px #0c2940;
+            line-height: 1.2;
+            letter-spacing: -0.5px;
+        }
+
+        .card-head .expt-date {
+            font-size: 17px;
+            font-weight: 500;
+            color: #ffdfb3;
+            background: rgba(0,0,0,0.08);
+            display: inline-block;
+            padding: 4px 16px;
+            border-radius: 60px;
+            margin-top: 5px;
+            border: 1px solid rgba(255,255,200,0.3);
+        }
+
+        .card-body {
+            padding: 20px 18px 22px;
+            background: rgba(255, 255, 255, 0.35);
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .card-body h3 {
+            font-size: 22px;
+            font-weight: 700;
+            color: #112d44;
+            margin-bottom: 10px;
+            border-left: 7px solid #fea63d;
+            padding-left: 16px;
+        }
+
+        .card-body p {
+            color: #1f405d;
+            font-size: 16px;
+            line-height: 1.5;
+            margin-bottom: 18px;
+            font-weight: 450;
+            min-height: 62px;
+        }
+
+        .open-button {
+            background: #1c527e;
+            border: none;
+            color: white;
+            font-weight: 600;
+            font-size: 17px;
+            padding: 14px 12px;
+            border-radius: 50px;
+            width: 100%;
+            box-shadow: 0 8px 0 #0a314b, 0 4px 15px rgba(0,90,150,0.3);
+            transition: 0.1s ease;
+            text-align: center;
+            display: inline-block;
+            border: 1px solid #8bb9e6;
+            cursor: pointer;
+            margin-top: 6px;
+        }
+
+        .open-button:hover {
+            background: #266ead;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 0 #0a2e45, 0 6px 18px #23639b;
+        }
+
+        .file-chip-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            justify-content: center;
+            margin: 15px 0 5px;
+        }
+
+        .file-chip {
+            background: #e7f0fb;
+            padding: 6px 16px;
+            border-radius: 50px;
+            font-size: 14px;
+            font-weight: 600;
+            color: #103a58;
+            border: 1px solid #9bb9da;
+            box-shadow: inset 0 1px 3px white, 0 3px 0 #a1bbd3;
+        }
+
+        /* quick access bar */
+        .access-bar {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            background: rgba(255, 255, 255, 0.5);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            padding: 14px 24px;
+            border-radius: 90px;
+            margin: 30px 0 18px;
+            border: 1px solid rgba(255,255,255,0.9);
+        }
+
+        .access-chip {
+            background: #edf5ff;
+            border-radius: 60px;
+            padding: 10px 22px;
+            font-size: 16px;
+            font-weight: 600;
+            color: #14436b;
+            box-shadow: 0 5px 0 #819bb9;
+            border: 1px solid white;
+            transition: 0.1s;
+        }
+
+        .access-chip:hover {
+            background: #ffffff;
+            transform: translateY(-4px);
+            box-shadow: 0 9px 0 #6a8bb0;
+        }
+
+        /* premium footer */
+        .footer-premium {
+            background: rgba(245, 250, 255, 0.7);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            border-radius: 60px;
+            padding: 28px 30px;
+            border: 1px solid rgba(255,255,255,0.9);
+            margin-top: 28px;
+        }
+
+        .footer-premium p {
+            font-size: clamp(18px, 4vw, 22px);
+            font-weight: 550;
+            color: #0f3450;
+            text-align: center;
+        }
+
+        .signature-line {
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            margin-top: 20px;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .signature-badge {
+            background: #15415f;
+            color: white;
+            padding: 10px 30px;
+            border-radius: 60px;
+            font-size: 20px;
+            font-weight: 500;
+            box-shadow: 0 6px 0 #0c263b;
+            border: 1px solid #fea63d;
+        }
+
+        /* mobile fine-tune */
+        @media (max-width: 500px) {
+            .glass-panel { padding: 20px 14px; border-radius: 38px; }
+            .card-head .expt-number { font-size: 32px; }
+            .card-body h3 { font-size: 20px; }
+            .open-button { font-size: 16px; padding: 13px 10px; }
+            .access-bar { border-radius: 40px; padding: 12px 12px; }
+            .access-chip { padding: 8px 16px; font-size: 14px; }
+            .footer-premium { padding: 22px 18px; }
+        }
+
+        /* extra cute detail */
+        .soft-line {
+            width: 100px;
+            height: 4px;
+            background: #ffb259;
+            border-radius: 10px;
+            margin: 10px auto 6px;
+        }
+        .watermark {
+            opacity: 0.2;
+            font-size: 12px;
+            text-align: center;
+            margin-top: 12px;
+            color: #1a4e79;
+        }
+    </style>
+</head>
+<body>
+    <div class="glass-panel">
+        <!-- header with vibe -->
+        <div class="top-lab">
+            <h1>🔬 practical · 2026</h1>
+            <div class="title-badge">
+                <span>📚 Lab PB</span>
+                <strong>p1 – p7</strong>
+            </div>
+            <div class="soft-line"></div>
+            <div style="margin-top: 12px; font-size: 18px; color: #1c4f7a; font-weight: 450;">✨ seven experiments · original data · exam ready</div>
+        </div>
+
+        <!-- experiment grid 7 cards – exactly as you wanted, but mobile optimized & luxurious -->
+        <div class="experiment-grid">
+            <!-- 1. travelling microscope -->
+            <a href="p1.html" class="expt-card" target="_blank">
+                <div class="card-head">
+                    <div class="expt-number">Expt. 01</div>
+                    <div class="expt-date">06/03/2026</div>
+                </div>
+                <div class="card-body">
+                    <h3>Travelling Microscope</h3>
+                    <p>internal & external diameter · hollow cylinder · volume</p>
+                    <span class="open-button">🔍 open p1.html</span>
+                    <div class="file-chip-row">
+                        <span class="file-chip">p1.html</span>
+                        <span class="file-chip">microscope</span>
+                    </div>
+                </div>
+            </a>
+
+            <!-- 2. screw gauge -->
+            <a href="p2.html" class="expt-card" target="_blank">
+                <div class="card-head">
+                    <div class="expt-number">Expt. 02</div>
+                    <div class="expt-date">11/11/2025</div>
+                </div>
+                <div class="card-body">
+                    <h3>Screw Gauge</h3>
+                    <p>cross-sectional area · pitch · least count · zero error</p>
+                    <span class="open-button">🔍 open p2.html</span>
+                    <div class="file-chip-row">
+                        <span class="file-chip">p2.html</span>
+                        <span class="file-chip">screw gauge</span>
+                    </div>
+                </div>
+            </a>
+
+            <!-- 3. helical spring -->
+            <a href="p3.html" class="expt-card" target="_blank">
+                <div class="card-head">
+                    <div class="expt-number">Expt. 03</div>
+                    <div class="expt-date">05/03/2026</div>
+                </div>
+                <div class="card-body">
+                    <h3>Helical Spring</h3>
+                    <p>spring constant · g by static & dynamic · SHM</p>
+                    <span class="open-button">🔍 open p3.html</span>
+                    <div class="file-chip-row">
+                        <span class="file-chip">p3.html</span>
+                        <span class="file-chip">spring</span>
+                    </div>
+                </div>
+            </a>
+
+            <!-- 4. moment of inertia -->
+            <a href="p4.html" class="expt-card" target="_blank">
+                <div class="card-head">
+                    <div class="expt-number">Expt. 04</div>
+                    <div class="expt-date">06/03/2026</div>
+                </div>
+                <div class="card-body">
+                    <h3>Moment of Inertia</h3>
+                    <p>cylinder + rectangular bar · torsional pendulum · CG axis</p>
+                    <span class="open-button">🔍 open p4.html</span>
+                    <div class="file-chip-row">
+                        <span class="file-chip">p4.html</span>
+                        <span class="file-chip">inertia</span>
+                    </div>
+                </div>
+            </a>
+
+            <!-- 5. bar pendulum -->
+            <a href="p5.html" class="expt-card" target="_blank">
+                <div class="card-head">
+                    <div class="expt-number">Expt. 05</div>
+                    <div class="expt-date">06/03/2026</div>
+                </div>
+                <div class="card-body">
+                    <h3>Bar Pendulum</h3>
+                    <p>value of g · compound pendulum · radius of gyration</p>
+                    <span class="open-button">🔍 open p5.html</span>
+                    <div class="file-chip-row">
+                        <span class="file-chip">p5.html</span>
+                        <span class="file-chip">bar pendulum</span>
+                    </div>
+                </div>
+            </a>
+
+            <!-- 6. kater's pendulum -->
+            <a href="p6.html" class="expt-card" target="_blank">
+                <div class="card-head">
+                    <div class="expt-number">Expt. 06</div>
+                    <div class="expt-date">10/03/2026</div>
+                </div>
+                <div class="card-body">
+                    <h3>Kater's Pendulum</h3>
+                    <p>reversibility · bessel's formula · precision gravity</p>
+                    <span class="open-button">🔍 open p6.html</span>
+                    <div class="file-chip-row">
+                        <span class="file-chip">p6.html</span>
+                        <span class="file-chip">kater's</span>
+                    </div>
+                </div>
+            </a>
+
+            <!-- 7. rigidity modulus -->
+            <a href="p7.html" class="expt-card" target="_blank">
+                <div class="card-head">
+                    <div class="expt-number">Expt. 07</div>
+                    <div class="expt-date">22/01/2026</div>
+                </div>
+                <div class="card-body">
+                    <h3>Rigidity Modulus</h3>
+                    <p>dynamic method · torsional pendulum · η of wire</p>
+                    <span class="open-button">🔍 open p7.html</span>
+                    <div class="file-chip-row">
+                        <span class="file-chip">p7.html</span>
+                        <span class="file-chip">rigidity</span>
+                    </div>
+                </div>
+            </a>
+        </div>
+
+        <!-- quick access chips – direct file names, mobile friendly -->
+        <div class="access-bar">
+            <span class="access-chip">📄 p1.html</span>
+            <span class="access-chip">📄 p2.html</span>
+            <span class="access-chip">📄 p3.html</span>
+            <span class="access-chip">📄 p4.html</span>
+            <span class="access-chip">📄 p5.html</span>
+            <span class="access-chip">📄 p6.html</span>
+            <span class="access-chip">📄 p7.html</span>
+        </div>
+
+
+
+        <!-- tiny watermark -->
+        <div class="watermark">practical exam · complete archive · seven experiments</div>
+    </div>
+</body>
+</html>

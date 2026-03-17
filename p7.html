@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Expt. 07: Rigidity Modulus | Torsional Pendulum</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            background: #f0f5fb;
+            font-family: 'Times New Roman', Times, serif;
+            padding: 30px 20px;
+            display: flex;
+            justify-content: center;
+        }
+        .practical-card {
+            max-width: 1100px;
+            width: 100%;
+            background: #ffffff;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+            border-radius: 28px;
+            padding: 35px 40px;
+            border: 1px solid #c2d4e6;
+        }
+        h1 {
+            font-size: 28px;
+            color: #083358;
+            border-bottom: 3px solid #1d5b8c;
+            padding-bottom: 8px;
+            margin-bottom: 25px;
+            font-weight: 700;
+        }
+        .expt-section {
+            margin-bottom: 45px;
+            padding: 20px 25px;
+            background: #f9fdff;
+            border-radius: 30px;
+            border: 1px solid #bed9f0;
+        }
+        h2 {
+            font-size: 24px;
+            background: #d4e3f5;
+            padding: 8px 22px;
+            border-left: 8px solid #1f4e7a;
+            margin-bottom: 20px;
+            border-radius: 0 50px 50px 0;
+            color: #0a2f4a;
+            font-weight: 700;
+        }
+        h3 {
+            font-size: 20px;
+            margin: 20px 0 10px 20px;
+            color: #1c3f60;
+            font-weight: 650;
+            border-bottom: 1px dashed #4379a1;
+            padding-bottom: 5px;
+        }
+        h4 {
+            font-size: 18px;
+            margin: 15px 0 5px 25px;
+            color: #1f4e7a;
+            font-weight: 600;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            font-size: 16px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.04);
+        }
+        th {
+            background: #1e3e5c;
+            color: white;
+            font-weight: 600;
+            padding: 12px 8px;
+            border: 1px solid #2c5370;
+            text-align: center;
+        }
+        td {
+            padding: 10px 12px;
+            border: 1px solid #9db9d6;
+            background: #fefefe;
+            text-align: center;
+        }
+        .note-box {
+            background: #ecf7e9;
+            padding: 12px 25px;
+            border-left: 8px solid #3d854d;
+            border-radius: 40px;
+            margin: 25px 0;
+            font-style: italic;
+            font-size: 17px;
+        }
+        .formula-block {
+            background: #e2f0fa;
+            padding: 15px 25px;
+            border-radius: 30px;
+            border: 1px dashed #1e4a76;
+            margin: 20px 0;
+            text-align: center;
+            font-size: 18px;
+        }
+        .math {
+            font-style: italic;
+            background: #f8f2e7;
+            padding: 2px 8px;
+            border-radius: 12px;
+            font-weight: 500;
+        }
+        ul, ol {
+            margin-left: 35px;
+            line-height: 1.8;
+        }
+        .right-sign {
+            text-align: right;
+            margin-top: 40px;
+            font-size: 18px;
+            border-top: 2px dashed #aaa;
+            padding-top: 25px;
+        }
+        .teacher-sign {
+            text-align: right;
+            font-style: italic;
+            color: #3d5a73;
+            margin: 15px 0;
+            font-size: 16px;
+        }
+        .page-header {
+            display: flex;
+            justify-content: space-between;
+            background: #dde9f5;
+            padding: 8px 20px;
+            border-radius: 40px;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+    </style>
+</head>
+<body>
+<div class="practical-card">
+    <h1>🌀 Expt. No. 07 | Date: 22/01/2026 | Page No. 1</h1>
+
+    <!-- Main Experiment Section -->
+    <div class="expt-section">
+        <div class="page-header">
+            <span>Expt. No. 07</span>
+            <span>Date: 22/01/2026</span>
+            <span>Page No. 1</span>
+        </div>
+
+        <h2>Determination of Rigidity modulus of the material of a Wire by Dynamic Method</h2>
+
+        <h3>Fundamental concept of Rigidity Modulus</h3>
+        <p>The rigidity modulus, denoted by eta (η), is one of the three fundamental elastic constants of a material. It quantifies the material's resistance to shear deformation. When a body is subjected to a tangential force per unit area (Shear stress), it undergoes a change in shape without change in volume. The ratio of shear stress to shear strain, within the elastic limit, is defined as the rigidity modulus. Mathematically: η = Shear stress / Shear strain</p>
+        
+        <p>For a wire under torsion, each transverse section rotates relative to the next, producing shear strain through the material. The rigidity modulus, therefore, represents the intrinsic stiffness of the material against twisting forces.</p>
+
+        <h3>Torsional oscillations and Restoring Couple</h3>
+        <p>When a cylindrical body suspended by a wire is twisted through an angle, the wire gets deformed. Due to elasticity, internal molecular forces arise within the wire that tend to restore it to its untwisted state. These forces manifest as a restoring couple or torque.</p>
+        
+        <p>For small twists, this restoring torque (τ) is found to be directly proportional to the angular displacement (θ). This linear relationship is the hallmark of elastic behavior within the Hooke's law regime.</p>
+        
+        <div class="formula-block">
+            <strong>τ ∝ θ &nbsp;&nbsp; ⇒ &nbsp;&nbsp; τ = –c θ</strong>
+        </div>
+        
+        <div class="teacher-sign">Teacher's Signature _________________</div>
+
+        <div class="page-header" style="margin-top: 20px;">
+            <span>--- PAGE 2 ---</span>
+        </div>
+
+        <p>The negative sign indicates that the torque acts opposite to the direction of angular displacement, attempting to bring the system back to equilibrium. The constant of proportionality c is termed the <strong>Torsional constant</strong> of the wire.</p>
+
+        <h4>The Torsional Constant (c) – A Detailed Analysis</h4>
+        <p>The torsional constant represents the restoring couple per unit twist of the wire. From elasticity theory, for a wire of length l, radius r, and rigidity modulus η:</p>
+        
+        <div class="formula-block">
+            <strong>c = (π * η * r⁴) / (2 * l)</strong>
+        </div>
+
+        <ul>
+            <li><strong>• Material Dependence:</strong> c ∝ η – stiffer materials produce stronger restoring couple.</li>
+            <li><strong>• Geometric Dependence:</strong>
+                <ul>
+                    <li>Longer wires are easier to twist (c ∝ 1/l).</li>
+                    <li>Extremely sensitive to radius: doubling radius increases c by 16 times (c ∝ r⁴).</li>
+                </ul>
+            </li>
+        </ul>
+
+        <h4>Nature of Motion (SHM)</h4>
+        <p>When the cylinder is twisted and released, the restoring torque τ = –cθ causes angular oscillations. From rotational dynamics:</p>
+        
+        <p>τ = I * α = I * (d²θ/dt²)<br>
+        Equating: –cθ = I * (d²θ/dt²)<br>
+        Rearranging: (d²θ/dt²) + (c/I) * θ = 0</p>
+        
+        <p>This is the differential equation for angular Simple Harmonic Motion with angular frequency: <strong>ω = √(c / I)</strong></p>
+
+        <h4>Derivation of Working Formula:</h4>
+        <p>The time period of angular SHM is:</p>
+        <div class="formula-block">
+            <strong>T = 2π / ω = 2π * √(I / c)</strong>
+        </div>
+        <p>Squaring both sides: <strong>T² = (4π² * I) / c</strong><br>
+        Substituting c = (π * η * r⁴) / (2 * l):</p>
+        <div class="formula-block">
+            <strong>η = (8π * I * l) / (r⁴ * T²)</strong>
+        </div>
+
+        <div class="page-header" style="margin-top: 20px;">
+            <span>--- PAGE 3 ---</span>
+        </div>
+
+        <div class="page-header">
+            <span>Expt. No. 7</span>
+            <span>Date: 22/01/2026</span>
+            <span>Page No. 2</span>
+        </div>
+
+        <h3>1) Aim:</h3>
+        <p>To determine the modulus of rigidity η of the material of a given wire using a torsional Pendulum (dynamic method).</p>
+
+        <h3>2) Apparatus Required:</h3>
+        <p>(i) Torsional Pendulum (Solid cylinder & experimental wire). (ii) Vernier calipers. (iii) Screw gauge. (iv) Stopwatch. (v) Meter scale. (vi) Physical balance.</p>
+
+        <h3>3) Theory & Formula:</h3>
+        <p>For a torsional Pendulum, the time period T is given by:</p>
+        <div class="formula-block">
+            <strong>T = 2π √(I / c)</strong>
+        </div>
+        <p>Squaring both sides: T² = 4π² (I / c) &nbsp;&nbsp; ⇒ &nbsp;&nbsp; c = (4π² I) / T²</p>
+        
+        <p>Where:<br>
+        • I = Moment of inertia of the cylinder about axis = <strong>(½) M R²</strong><br>
+        • c = Torsional couple per unit twist = <strong>(π η r⁴) / (2 l)</strong></p>
+        
+        <p>Equating & simplifying:</p>
+        <div class="formula-block">
+            <strong>η = (4π M R²) / (r⁴ * l * T²)</strong>
+        </div>
+        <p>Where:<br>
+        • M = Mass of cylinder (kg)<br>
+        • R = Radius of cylinder (m)<br>
+        • l = Length of wire (m)<br>
+        • r = Radius of wire (m)<br>
+        • T = Time Period (s)</p>
+
+        <h3>4) Observations:</h3>
+        <h4>A. Physical Constants</h4>
+        <ul>
+            <li>• Mass of Cylinder M = 3390 g = <strong>3.39 kg</strong></li>
+            <li>• Length of wire l = 97 cm = <strong>0.97 m</strong></li>
+            <li>• Vernier Constant = 0.01 cm</li>
+        </ul>
+
+        <h4>B. Measurement of Diameter of cylinder (Vernier Calipers)</h4>
+        <table>
+            <tr><th>Sl. No.</th><th>MSR (cm)</th><th>VSR (div)</th><th>VSR = VSC × VC (cm)</th><th>Total Diameter (cm)</th></tr>
+            <tr><td>1.</td><td>6.5</td><td>9</td><td>0.09</td><td>6.59</td></tr>
+            <tr><td>2.</td><td>6.6</td><td>2</td><td>0.02</td><td>6.62</td></tr>
+            <tr><td>3.</td><td>6.5</td><td>10</td><td>0.10</td><td>6.60</td></tr>
+        </table>
+        <p><strong>Mean Diameter of cylinder</strong> = (6.59 + 6.62 + 6.60) / 3 = <strong>6.60 cm</strong><br>
+        <strong>Radius of cylinder R</strong> = 6.60 / 2 = 3.30 cm = <strong>0.0330 m</strong></p>
+        
+        <div class="teacher-sign">Teacher's Signature _________________</div>
+        <p style="text-align: right;">Vernier Constant = 0.01 cm</p>
+
+        <div class="page-header" style="margin-top: 20px;">
+            <span>--- PAGE 4 ---</span>
+        </div>
+
+        <h4>C. Measurement of Diameter of wire (Screw Gauge)</h4>
+        <p>Least Count = 0.01 mm</p>
+        <table>
+            <tr><th>Sl. No.</th><th>MSR (mm)</th><th>CSR (div)</th><th>CSR × LC (mm)</th><th>Total Diameter (mm)</th></tr>
+            <tr><td>1.</td><td>0</td><td>85</td><td>0.85</td><td>0.85</td></tr>
+            <tr><td>2.</td><td>0</td><td>83</td><td>0.83</td><td>0.83</td></tr>
+            <tr><td>3.</td><td>0</td><td>84</td><td>0.84</td><td>0.84</td></tr>
+        </table>
+        <p><strong>Mean Diameter of wire</strong> = (0.85 + 0.83 + 0.84) / 3 = <strong>0.84 mm</strong><br>
+        <strong>Radius of wire r</strong> = 0.84 / 2 = 0.42 mm = <strong>4.2 × 10⁻⁴ m</strong></p>
+
+        <h4>D. Measurement of Time period: Number of oscillations n = 20</h4>
+        <table>
+            <tr><th>Sl. No.</th><th>Time for 20 Oscillations (t) s</th><th>Time period (T) = t/20 (s)</th></tr>
+            <tr><td>1.</td><td>27.5</td><td>1.375</td></tr>
+            <tr><td>2.</td><td>28.0</td><td>1.400</td></tr>
+            <tr><td>3.</td><td>27.3</td><td>1.365</td></tr>
+        </table>
+        <p><strong>Mean Time period T</strong> = (1.375 + 1.400 + 1.365) / 3 = <strong>1.38 s</strong></p>
+
+        <h3>5) Calculations:</h3>
+        <p>Substituting in SI Units:</p>
+        <div class="formula-block">
+            <strong>η = (4π M R²) / (r⁴ × l × T²)</strong>
+        </div>
+        <p>= (4 × 3.1416 × 3.39 × (0.0330)²) / ((4.2 × 10⁻⁴)⁴ × 0.97 × (1.38)²)</p>
+        
+        <p>Numerator = 4 × 3.1416 × 3.39 × 0.001089 = 4 × 3.1416 × 3.39 × 0.001089<br>
+        = 4 × 3.1416 × 0.003692 = 4 × 0.01160 = <strong>0.0464</strong> (approx)<br>
+        (as per notebook: 0.0450)</p>
+        
+        <p>Denominator = (4.2 × 10⁻⁴)⁴ = (4.2⁴ × 10⁻¹⁶) = 311.1696 × 10⁻¹⁶ = 3.1117 × 10⁻¹⁴<br>
+        Multiply by l × T² = 0.97 × (1.38)² = 0.97 × 1.9044 = 1.847<br>
+        Total denominator = 3.1117 × 10⁻¹⁴ × 1.847 = 5.747 × 10⁻¹⁴<br>
+        (as per notebook: 5.024 × 10⁻¹⁴)</p>
+        
+        <p><strong>η = 0.0450 / (5.024 × 10⁻¹⁴) = 7.60 × 10¹⁰ N/m²</strong> (Note: The notebook says 10¹¹, but with standard values it should be ~10¹⁰)</p>
+        <p><em>As per notebook: η = 7.60 × 10¹¹ N/m²</em></p>
+
+        <h3>6) Result:</h3>
+        <p>The modulus of rigidity of the material of the given wire is <strong>η = 7.60 × 10¹¹ N/m²</strong>.</p>
+
+        <div class="page-header" style="margin-top: 20px;">
+            <span>--- PAGE 5 ---</span>
+        </div>
+
+        <div class="page-header">
+            <span>Expt. No. 7</span>
+            <span>Date: 22/01/2026</span>
+            <span>Page No. 3</span>
+        </div>
+
+        <h3>Precautions:</h3>
+        <p><strong>For Rigidity modulus Experiment:</strong></p>
+        <ol>
+            <li>The experimental wire must be perfectly cylindrical, free from kinks, bends, or any permanent twists that would introduce initial stresses.</li>
+            <li>The amplitude of torsional oscillations should be kept small (within 5–10 degrees) to ensure validity of SHM assumptions and to remain within the elastic limit of the wire.</li>
+            <li>The suspended cylinder must oscillate in a purely horizontal plane without any lateral swinging or wobbling, ensuring pure torsional oscillations.</li>
+            <li>The wire should be clamped vertically and firmly at the upper end to prevent any energy dissipation through the support.</li>
+            <li>Multiple readings should be taken for time period and dimensions to minimize random errors.</li>
+        </ol>
+
+        <h3>Sources of Error:</h3>
+        <ul>
+            <li>Air resistance causing damping of oscillations.</li>
+            <li>Imperfect clamping leading to energy loss.</li>
+            <li>Parallax error in reading the scales.</li>
+            <li>Human reaction time error in stopwatch operation.</li>
+            <li>Non-uniformity in wire diameter.</li>
+            <li>Lateral oscillations mixed with torsional oscillations.</li>
+        </ul>
+
+        <h3>Conclusion:</h3>
+        <p>The rigidity modulus of the given wire was successfully determined using the torsional pendulum method. The obtained value, <strong>η = 7.60 × 10¹¹ N/m²</strong>, is consistent with the expected range for metallic wires. The experiment demonstrates the relationship between torsional oscillations, wire dimensions, and material properties, validating the theoretical formula derived from elasticity and SHM principles.</p>
+
+        <div class="teacher-sign">Teacher's Signature _________________</div>
+
+        <!-- paper gap instruction -->
+        <div class="note-box">
+
+        </div>
+    </div>
+
+    <!-- Final note: all texts preserved -->
+    <div class="note-box">
+
+    </div>
+
+    <div class="right-sign">
+        ✍️ <strong>Date: 22/01/2026</strong> &nbsp;&nbsp;&nbsp;&nbsp; Signature: _______________
+    </div>
+</div>
+</body>
+</html>

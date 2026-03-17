@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Expt. 01: Travelling Microscope | Hollow Cylinder</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            background: #f3f5f9;
+            font-family: 'Times New Roman', Times, serif;
+            padding: 30px 20px;
+            display: flex;
+            justify-content: center;
+        }
+        .practical-card {
+            max-width: 950px;
+            width: 100%;
+            background: #ffffff;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            border-radius: 18px;
+            padding: 35px 40px;
+            border: 1px solid #d0d7de;
+        }
+        h1 {
+            font-size: 26px;
+            color: #0b2b4a;
+            border-bottom: 2px solid #1e4a76;
+            padding-bottom: 6px;
+            margin-bottom: 25px;
+            font-weight: 600;
+            letter-spacing: 0.3px;
+        }
+        .aim, .apparatus, .theory, .formula, .observation, .calculation, .result, .error, .precautions, .conclusion {
+            margin-bottom: 28px;
+        }
+        h2 {
+            font-size: 20px;
+            background: #e7edf5;
+            padding: 6px 15px;
+            border-left: 6px solid #1f4e7a;
+            margin-bottom: 15px;
+            border-radius: 0 10px 10px 0;
+            color: #0a314b;
+            font-weight: 600;
+        }
+        h3 {
+            font-size: 18px;
+            margin: 12px 0 6px 18px;
+            color: #1f3a57;
+            font-weight: 600;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 18px 0;
+            font-size: 16px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.03);
+        }
+        th {
+            background: #1e3e5c;
+            color: white;
+            font-weight: 500;
+            padding: 10px 8px;
+            border: 1px solid #2c5370;
+        }
+        td {
+            padding: 8px 10px;
+            border: 1px solid #b0c4d9;
+            background: #fdfdfd;
+        }
+        .note-highlight {
+            background: #fff9e0;
+            padding: 8px 18px;
+            border-left: 6px solid #b0803c;
+            border-radius: 12px;
+            margin: 20px 0;
+            font-style: italic;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+        }
+        .important {
+            color: #b13e3e;
+            font-weight: 600;
+            background: #ffeaea;
+            padding: 2px 8px;
+            border-radius: 20px;
+        }
+        .formula-block {
+            background: #f4f9ff;
+            padding: 12px 20px;
+            border-radius: 18px;
+            border: 1px dashed #1e4a76;
+            margin: 15px 0;
+        }
+        .center {
+            text-align: center;
+        }
+        .right-sign {
+            text-align: right;
+            margin-top: 30px;
+            font-size: 18px;
+            font-weight: 500;
+            border-top: 1px dashed #aaa;
+            padding-top: 25px;
+        }
+        ul, ol {
+            margin-left: 30px;
+            line-height: 1.7;
+        }
+        .warning-box {
+            background: #fef3e2;
+            border: 2px solid #e6b87e;
+            border-radius: 20px;
+            padding: 16px 25px;
+            margin: 20px 0;
+            font-weight: 500;
+        }
+        .microscope-detail {
+            background: #eef3fa;
+            padding: 15px 20px;
+            border-radius: 24px;
+            margin-top: 15px;
+        }
+    </style>
+</head>
+<body>
+    <div class="practical-card">
+        <h1>🔬 Expt. No. 01 | Date: 06/03/2026</h1>
+        <div class="aim">
+            <h2>1. Aim</h2>
+            <p style="font-size: 17px; margin-left: 20px;">To determine the internal and external diameter of a given hollow cylinder using a travelling microscope, and to calculate its volume.</p>
+        </div>
+
+        <div class="apparatus">
+            <h2>2. Apparatus - Purpose</h2>
+            <ul>
+                <li><strong>Travelling Microscope</strong> – For precise measurement of diameters.</li>
+                <li><strong>Hollow cylinder</strong> – The object whose diameters are to be measured.</li>
+                <li><strong>Spirit Level</strong> – To ensure the microscope is perfectly horizontal.</li>
+                <li><strong>Reading Lens</strong> – To avoid Parallax error while taking readings.</li>
+                <li><strong>Vernier Scale</strong> – Attached to microscope for fine measurement.</li>
+                <li><strong>Main scale</strong> – Graduated in centimeters and millimeters.</li>
+            </ul>
+        </div>
+
+        <div class="theory">
+            <h2>3. Theory and Formula</h2>
+            <h3>3.1 Description of Travelling microscope:</h3>
+            <p>The travelling microscope is a precise instrument used for measuring small distances with high accuracy. It consists of a microscope that can be moved horizontally and vertically along graduated scales. The main scale is divided into centimeters and millimeters, while a vernier scale attached to the microscope allows readings upto 0.001 cm (or 0.01 mm). This makes it ideal for measuring internal and external diameters of hollow objects like tubes and cylinders.</p>
+            <h3>3.2 Working Principle:</h3>
+            <p>The travelling microscope works on the principle of vernier measurement. When the microscope is focused on a point, its position can be read from the main scale and vernier scale. By moving the microscope from one edge of the cylinder to the opposite edge, the distance traveled gives the diameter at that position.</p>
+            <h3>3.3 Key Definitions:</h3>
+            <ul>
+                <li><strong>Main Scale Division (MSD):</strong> The smallest division marked on the main scales of the instrument. In this instrument, 1 MSD = 0.05 cm.</li>
+                <li><strong>Vernier Scale Division (VSD):</strong> The smallest division marked on the vernier scale. Here, 50 VSD correspond to a certain length on the main scale.</li>
+                <li><strong>Vernier Constant (VC) or Least Count (LC):</strong> The smallest measurement that can be made with the instrument. It is calculated as: <br> <strong>Least Count (LC) = Value of 1 Main Scale Division / Number of Division on Vernier Scale</strong><br> LC = S / N = 0.05 cm / 50 = <strong>0.001 cm</strong> <br> This means the instrument can measure accurately up to 0.001 cm or 0.01 mm.</li>
+            </ul>
+            <h3>3.4 Formula for Total Reading:</h3>
+            <p>When taking any measurement, the total reading is obtained by combining the main scale reading and the vernier scale reading. <br> <strong>Total Reading (TR) = Main Scale Reading (MSR) + (VSR x LC)</strong></p>
+            <h3>3.5 Measurement of External Diameter:</h3>
+            <ul>
+                <li><strong>Vertical External Diameter D_ext(V):</strong> The vertical external diameter is obtained by taking difference between the readings at the topmost and the bottommost points on the outer wall of the cylinder. <br> <strong>D_ext(V) = |Topmost outer reading – Bottommost outer reading|</strong></li>
+                <li><strong>Horizontal External Diameter D_ext(H):</strong> The horizontal external diameter is obtained by taking the difference between the readings at the leftmost and rightmost points on the outer wall of the cylinder. <br> <strong>D_ext(H) = |Leftmost outer reading – Rightmost outer reading|</strong></li>
+                <li><strong>Mean External Diameter (D_ext):</strong> The mean external diameter is the average of the vertical and horizontal external diameters. <br> <strong>D_ext = [D_ext(V) + D_ext(H)] / 2</strong></li>
+            </ul>
+            <h3>3.6 Measurement of Internal Diameter:</h3>
+            <p>Internal diameter is measured similarly by focusing on the inner walls through the hollow opening instead of the outer walls.</p>
+            <ul>
+                <li><strong>D_int(V) = |Topmost inner reading – Bottommost inner reading|</strong></li>
+                <li><strong>D_int(H) = |Leftmost inner reading – Rightmost inner reading|</strong></li>
+                <li><strong>D_int = [D_int(V) + D_int(H)] / 2</strong></li>
+            </ul>
+            <h3>3.7 Formula for Volume of Hollow cylinder:</h3>
+            <p>The volume of a hollow cylinder is calculated by subtracting the volume of the inner empty space from the volume of the outer cylinder.</p>
+            <div class="formula-block">
+                <p><strong>Volume of Hollow cylinder = Volume of outer cylinder – Volume of inner cylinder.</strong></p>
+                <p><strong>V = π R² L – π r² L = π L (R² – r²)</strong></p>
+                <p>Where: <br> R = External radius = External Diameter / 2 = D_ext / 2 <br> r = Internal radius = Internal Diameter / 2 = D_int / 2 <br> L = Length of the cylinder <br> π = 3.1416 (constant) <br> Alternatively, in terms of diameters: <strong>V = (π L / 4) * (D_ext² – D_int²)</strong></p>
+            </div>
+        </div>
+
+        <div class="observation">
+            <h2>4. Determination of Vernier Constant (Least Count)</h2>
+            <ul>
+                <li>Value of 1 smallest division of main scale (S) = 0.05 cm</li>
+                <li>Total number of divisions on Vernier = 50</li>
+                <li><strong>Vernier constant (VC) = 0.001 cm</strong></li>
+            </ul>
+        </div>
+
+        <div class="observation">
+            <h2>5. Zero Error Determination</h2>
+            <p>Before starting measurements, the instrument must be checked for zero error.</p>
+            <ul>
+                <li>When the microscope is focused on a fixed reference point, if the vernier zero coincides with the main scale zero, there is no zero error.</li>
+                <li>If the vernier zero is to the right of main scale zero, it is positive zero error (subtract from readings).</li>
+                <li>If the vernier zero is to the left of main scale zero, it is negative zero error (add to readings).</li>
+            </ul>
+            <p><strong>In our experiment:</strong> The instrument was checked and found to have <span class="important">no zero error</span>. Therefore, zero correction = 0.000 cm.</p>
+        </div>
+
+        <div class="observation">
+            <h2>6. Observations and Data Tables</h2>
+
+            <h3>6.1 Measurement of length of the cylinder (L)</h3>
+            <table>
+                <tr><th>Obs. No.</th><th>MSR (cm)</th><th>VSR (div)</th><th>Total Reading = MSR + (VSR x LC)</th></tr>
+                <tr><td>1.</td><td>23.2</td><td>30</td><td>23.2 + (30 x 0.001) = 23.230</td></tr>
+                <tr><td>2.</td><td>23.2</td><td>31</td><td>23.231</td></tr>
+                <tr><td>3.</td><td>23.2</td><td>29</td><td>23.229</td></tr>
+                <tr><td>4.</td><td>23.2</td><td>25</td><td>23.325</td></tr>
+                <tr><td>5.</td><td>23.2</td><td>26</td><td>23.326</td></tr>
+                <tr><td colspan="3" style="text-align:right;"><strong>Mean Length (cm)</strong></td><td><strong>23.268 cm</strong></td></tr>
+            </table>
+
+            <h3>6.2 Measurement of Internal Diameter</h3>
+            <table>
+                <tr><th>Position</th><th>Obs. No.</th><th>MSR (cm)</th><th>VSR</th><th>Total Reading (cm)</th><th>Mean at Position (cm)</th></tr>
+                <tr><td>Topmost Point (Inner)</td><td>1,2,3</td><td>5.7,5.7,5.7</td><td>40,41,45</td><td>5.740, 5.741, 5.745</td><td>5.742</td></tr>
+                <tr><td>Bottommost Point (Inner)</td><td>1,2,3</td><td>5.8,5.8,5.8</td><td>19,12,10</td><td>5.819, 5.812, 5.810</td><td>5.814</td></tr>
+                <tr><td>Leftmost Point (Inner)</td><td>1,2,3</td><td>2.9,2.9,2.9</td><td>30,09,43</td><td>2.930, 2.909, 2.943</td><td>2.927</td></tr>
+                <tr><td>Rightmost Point (Inner)</td><td>1,2,3</td><td>2.3,2.3,2.3</td><td>21,27,21</td><td>2.321, 2.327, 2.321</td><td>2.323</td></tr>
+            </table>
+
+            <h3>6.3 Measurement of External Diameter</h3>
+            <table>
+                <tr><th>Position</th><th>Obs. No.</th><th>MSR (cm)</th><th>VSR</th><th>Total Reading (cm)</th><th>Mean at Position (cm)</th></tr>
+                <tr><td>Topmost Point (Outer)</td><td>1,2,3</td><td>6.2,6.2,6.2</td><td>25,26,24</td><td>6.225, 6.226, 6.224</td><td>6.225</td></tr>
+                <tr><td>Bottommost Point (Outer)</td><td>1,2,3</td><td>5.5,5.5,5.5</td><td>38,39,37</td><td>5.538, 5.539, 5.537</td><td>5.538</td></tr>
+                <tr><td>Leftmost Point (Outer)</td><td>1,2,3</td><td>3.4,3.4,3.4</td><td>15,16,19</td><td>3.415, 3.416, 3.419</td><td>3.414</td></tr>
+                <tr><td>Rightmost Point (Outer)</td><td>1,2,3</td><td>2.8,2.8,2.8</td><td>42,43,41</td><td>2.842, 2.843, 2.841</td><td>2.842</td></tr>
+            </table>
+        </div>
+
+        <div class="calculation">
+            <h2>7. Calculations (with logical correction)</h2>
+            <div class="warning-box">
+                ⚠️ <strong>Note (as pointed out):</strong> Original notebook had a subtraction error (top – bottom gave small diameter). Correct method: <strong>Diameter = Larger Reading – Smaller Reading</strong>. Below are corrected internal & external diameters using proper order.
+            </div>
+
+            <h3>Internal Diameter Calculation (Corrected)</h3>
+            <ul>
+                <li><strong>Vertical Internal Diameter:</strong> Bottom(5.814) – Top(5.742) = <strong>0.072 cm</strong></li>
+                <li><strong>Horizontal Internal Diameter:</strong> Left(2.927) – Right(2.323) = <strong>0.604 cm</strong></li>
+                <li><strong>Mean Internal Diameter:</strong> D_int = (0.072 + 0.604)/2 = <strong>0.338 cm</strong></li>
+            </ul>
+
+            <h3>External Diameter Calculation (Corrected)</h3>
+            <ul>
+                <li><strong>Vertical External Diameter:</strong> Top(6.225) – Bottom(5.538) = <strong>0.687 cm</strong></li>
+                <li><strong>Horizontal External Diameter:</strong> Left(3.414) – Right(2.842) = <strong>0.572 cm</strong> (approx, using 3.414 – 2.842 = 0.572)</li>
+                <li><strong>Mean External Diameter:</strong> D_ext = (0.687 + 0.572)/2 = <strong>0.630 cm</strong></li>
+            </ul>
+
+            <h3>Wall Thickness</h3>
+            <p>Wall Thickness = (D_ext – D_int) / 2 = (0.630 – 0.338)/2 = <strong>0.146 cm</strong></p>
+
+            <h3>7.4 Volume Calculation</h3>
+            <ul>
+                <li>External Radius R = D_ext/2 = 0.630/2 = <strong>0.315 cm</strong></li>
+                <li>Internal Radius r = D_int/2 = 0.338/2 = <strong>0.169 cm</strong></li>
+                <li>Length L = 23.268 cm</li>
+                <li>R² = (0.315)² = 0.09923 cm²</li>
+                <li>r² = (0.169)² = 0.02856 cm²</li>
+                <li>R² – r² = 0.09923 – 0.02856 = <strong>0.07067 cm²</strong></li>
+                <li><strong>V = π L (R² – r²) = 3.1416 × 23.268 × 0.07067 = 5.166 cm³</strong> (approx 5.167 cm³)</li>
+            </ul>
+            <p style="background: #e9f3fb; padding: 8px; border-radius: 10px;">✅ <strong>Volume of hollow cylinder = 5.167 cm³</strong></p>
+        </div>
+
+        <div class="error">
+            <h2>8. Sources of Error</h2>
+            <h3>8.1 Systematic Errors</h3>
+            <ul>
+                <li>Zero Error: If the instrument has inherent zero error not properly accounted for.</li>
+                <li>Backlash Error: Due to loose fitting between screw and nut.</li>
+                <li>Scale Calibration Error: If the main scale is not accurately calibrated.</li>
+            </ul>
+            <h3>8.2 Random Errors</h3>
+            <ul>
+                <li>Parallax Error: Occurs when eye is not perpendicular to the scale while reading.</li>
+                <li>Focusing Error: Improper focusing on the edges of the cylinder.</li>
+                <li>Estimation Error: Error in judging the exact coincidence of vernier divisions.</li>
+            </ul>
+        </div>
+
+        <div class="precautions">
+            <h2>9. Precautions</h2>
+            <ul>
+                <li>The microscope was properly leveled using a spirit level before starting the experiment.</li>
+                <li>To avoid backlash error, the screw was always turned in the same direction for a particular set of readings.</li>
+                <li>While taking readings, the eyes was kept directly above the scale to avoid parallax error.</li>
+                <li>The cylinder was held firmly and steadily during measurements.</li>
+                <li>Multiple readings (3 at each position) were taken and averaged to minimize random errors.</li>
+                <li>The edges of the cylinder were sharply focused before taking readings.</li>
+                <li>The instrument was checked for zero error before starting and found to have no zero error.</li>
+                <li>For internal diameter, careful focusing through the hollow opening was done to ensure proper measurement of the inner walls.</li>
+                <li>Gentle handling of the microscope was maintained while moving it.</li>
+            </ul>
+        </div>
+
+        <div class="conclusion">
+            <h2>10. Conclusion</h2>
+            <p>The Travelling microscope is a highly precise instrument capable of measuring dimensions up to 0.001 cm. Using the instrument:</p>
+            <ul>
+                <li><strong>Internal Diameter</strong> was measured by focusing on the inner walls through the hollow opening at top, bottom, left, and right positions. The mean internal diameter was found to be <strong>0.338 cm</strong>.</li>
+                <li><strong>External Diameter</strong> was measured by focusing on the outer walls at top, bottom, left, and right positions. The mean external diameter was found to be <strong>0.630 cm</strong>.</li>
+                <li>The wall thickness of the hollow cylinder is <strong>0.146 cm</strong>, calculated as half the difference between external and internal diameters.</li>
+                <li>Using these values along with the length of the cylinder (23.268 cm), the volume of the hollow cylinder was calculated to be <strong>5.167 cm³</strong>.</li>
+                <li>The experiment demonstrates the importance of taking multiple readings in perpendicular directions to account for any non-uniformity in the cylinder's shape.</li>
+            </ul>
+        </div>
+
+        <!-- important note section as per conversation -->
+        <div class="note-highlight">
+        </div>
+
+        <div class="right-sign">
+            ✍️ <strong>Date: 06/03/2026</strong> &nbsp;&nbsp;&nbsp;&nbsp; Signature: _______________
+        </div>
+    </div>
+</body>
+</html>
